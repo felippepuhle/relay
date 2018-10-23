@@ -365,7 +365,7 @@ function fetchQueryAndComputeStateFromProps(
     if (typeof requestCacheKey === 'string' && requestCache[requestCacheKey]) {
       // This same request is already in flight.
 
-      const {snapshot} = requestCache[requestCacheKey];
+      const snapshot = requestCache[requestCacheKey].snapshot || requestCache[requestCacheKey].queryFetcher._snapshot;
       if (snapshot) {
         // Use the cached response
         return {
